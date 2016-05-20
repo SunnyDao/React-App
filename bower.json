@@ -1,0 +1,23 @@
+{
+  "name": "react-app",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "oscar"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "react": "~15.0.2",
+    "vue": "~1.0.24"
+  }
+}
