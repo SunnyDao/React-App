@@ -16,36 +16,53 @@
 			console.log('getInitialState在这里执行')
 		    return {
 		        count:0,
-		        message:'你们给我搞得这个React啊，Excited！'
+		        title:'你们给我搞得这个React啊，Excited！'
 		    };
 		},
 		getDefaultProps:function() {
-		    console.log('getDefaultProps在这里执行')
 		},
-		componentWillMount:function() {
-  			console.log('componentWillMount在这里执行')
-  			//这里可以改变状态
-  			var _this=this;
-  			this.timer=setInterval(function(){
-  				_this.setState({
-  					count:_this.state.count+1,
-  				})
-  			},1000)
+		shouldComponentUpdate:function(nextProps, nextState){
+			console.log('shouldComponentUpdate')
+			if(nextState.count>100){
+				alert('你已经身经百战，见得多了！');
+				return false;
+			}else{
+				return true;
+			}
 		},
-		componentDidMount:function(argument) {
-			console.log('componentDidMount在这里执行')
-			//这里可以获取dom,AJAX操作，获取值更新dom
+		componentWillUpdate:function(nextProps, nextState){
+			console.log('componentWillUpdate')
+		},
+		componentDidUpdate:function(nextProps, nextState){
+			console.log('componentDidUpdate')
+		},
+		addExperience:function(){
+			this.setState({
+				count:this.state.count+20,
+			})
 		},
 		render:function(){
 			console.log('渲染')
 			return (
 				<div>
-					<h1>人森经验 + {this.state.count}</h1>
-					<p>{this.state.message}</p>
+					<h1>{this.state.title}</h1>
+					<h2>人森经验  {this.state.count}</h2>
+					<button onClick={this.addExperience}>增加人森经验</button>
+					<Experience message={this.state.count}/>
 				</div>
 			)
 		}
 	});
+	var Experience = React.createClass({
+		componentWillReceiveProps:function(){
+			console.log('子组件将获得props')
+		},
+		render:function(){
+			return (
+				<h3>你已经身经{this.props.message}战了！</h3>
+			)
+		}
+	})
 	var LikeButton = React.createClass({
 		getInitialState:function(){
 			return {
