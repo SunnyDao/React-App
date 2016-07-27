@@ -1,0 +1,71 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>React</title>
+</head>
+<body>
+
+<script type="text/javascript" src="../app/lib/react/react.js"></script>
+<script type="text/javascript" src="../app/lib/react/react-dom.js"></script>
+<script src="bowers.min.js"></script>
+
+<div id="example"></div>
+<script type="text/babel">
+	var MessageBox = React.createClass({
+		render:function(){
+			var submessage=[];
+			for(var i=0;i<3;i++){
+				submessage.push(
+					<Submessage key={i}/>
+				)
+			}
+			return (
+				<div>
+					<h1>hello world!</h1>
+					{submessage}
+				</div>
+			)
+		}
+	});
+	var Submessage = React.createClass({
+		render:function(){
+			return (
+				<div>
+					<h2>Coder Coding!</h2>
+					<LikeButton/>
+				</div>
+			)
+		}
+	});
+	var LikeButton = React.createClass({
+		getInitialState:function(){
+			return {
+				liked:false,
+				titleMessage:'钦定了'
+			};
+		},
+		handleClick:function(event){
+			this.setState({liked:!this.state.liked});
+		},
+		render:function(){
+			var text=this.state.liked?'喜欢':'不喜欢';
+			var styleObj={
+				color:this.state.liked?'red':'blue',
+			}
+			return (
+				<p onClick={this.handleClick}>
+					你<b style={styleObj}>{text}</b>我，因为{this.state.titleMessage}。
+				</p>
+			)
+		}
+	});
+	ReactDOM.render(<MessageBox/>,
+		document.getElementById('example'),
+		function(){
+			console.log('111')
+		}
+	);
+	
+</script>
+</body>
+

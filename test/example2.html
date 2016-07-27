@@ -1,0 +1,62 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>React</title>
+</head>
+<body>
+
+<script type="text/javascript" src="../app/lib/react/react.js"></script>
+<script type="text/javascript" src="../app/lib/react/react-dom.js"></script>
+<script src="bowers.min.js"></script>
+
+<div id="example"></div>
+<script type="text/babel">
+	var MessageBox = React.createClass({
+		getInitialState:function(){
+			return {
+				titleMessage:'人的命运',
+				subMessage:[
+					'当然要靠自我奋斗',
+					'但是也要考虑到历史进程'
+				]
+			}
+		},
+		render:function(){
+			return(
+				<div>
+					<h1>{this.state.titleMessage}</h1>
+					<Submessage messages={this.state.subMessage}/>
+				</div>
+			)
+		}
+	});
+	var Submessage = React.createClass({
+		propTypes:function(){
+			messages:React.Proptypes.array.isRequired
+		},
+		getDefaultProps:function(){
+			return {
+				messages:['到底是更依靠自我奋斗，还是更依靠历史进程']
+			}
+		},
+		render:function(){
+			var msgs=[];
+			this.props.messages.forEach(function(msg,index){
+				msgs.push(
+					<p key={index}>{msg}</p>
+				)
+			})
+			return (
+				<div>{msgs}</div>
+			)
+		}
+	});
+	ReactDOM.render(<MessageBox/>,
+		document.getElementById('example'),
+		function(){
+			console.log('111')
+		}
+	);
+	
+</script>
+</body>

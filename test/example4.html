@@ -1,0 +1,66 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>React</title>
+</head>
+<body>
+
+<div id="example"></div>
+
+
+<script type="text/javascript" src="../app/lib/react/react.js"></script>
+<script type="text/javascript" src="../app/lib/react/react-dom.js"></script>
+<script src="bowers.min.js"></script>
+
+<script type="text/jsx">
+	var From = React.createClass({
+		getInitialState:function(){
+			return{
+				inputValue:'input ',
+				selectValue:'A',
+				radioValue:'B',
+				textareaValue:'text code'
+			}
+		},
+		handleSubmit:function(e){
+			e.preventDefault();
+			
+		},
+		render:function(){
+			return (
+				<form onSubmit={this.handleSubmit}>
+					<input type="text" defaultValue=""/>
+					<br/>
+					<select defaultValue="B">
+						<option value="A">A</option>
+						<option value="B">B</option>
+						<option value="C">C</option>
+						<option value="D">D</option>
+						<option value="E">E</option>
+						<option value="F">F</option> 
+					</select>
+					<br/>
+					<p>radio</p>
+					<input name="goodRadio" type="radio" value="A"/>
+					<input name="goodRadio" type="radio" value="B" defaultValue/>
+					<input name="goodRadio" type="radio" value="C"/>
+					<p>checkbox</p>
+					<input name="goodRadio" type="checkbox" value="A"/>
+					<input name="goodRadio" type="checkbox" value="B"/>
+					<input name="goodRadio" type="checkbox" value="C" defaultValue/>
+					<br/>
+					<textarea defaultValue="text code"></textarea>
+				</form>
+			)
+		}
+	});
+	ReactDOM.render(<MessageBox/>,
+		document.getElementById('example'),
+		function(){
+			console.log('111')
+		}
+	);
+	
+</script>
+</body>
+</html>
