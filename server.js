@@ -5,13 +5,13 @@ var config = require('./webpack.config.js');
 var compiler = webpack(config);
 var server = new webpackDevServer(compiler,{
 	historyApiFallback: true,
-	hot:true,
-	inline:true,
-	progress:true,
-	contentBase:'./app',
+    hot: true,
+    inline: true,
+	progress: true,/*
+	contentBase:'./build',*/
 	stats:{colors:true}
 })
-config.entry.unshift("webpack-dev-server/client?http://localhost:8080/","webpack/hot/dev-server");
+config.entry.unshift("webpack-dev-server/client?http://localhost:8080","webpack/hot/dev-server");
 server.listen(8080,'localhost',function(err){
 	if(err){
 		console.log(err)

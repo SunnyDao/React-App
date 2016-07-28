@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev":"webpack-dev-server --progress --profile --colors --hot",
+    "test": "webpack-dev-server --hot --inline"
   },
   "author": "oscar",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "jsx-loader": "^0.13.2",
     "less": "^2.6.1",
     "less-loader": "^2.2.3",
+    "open-browser-webpack-plugin": "0.0.2",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-redux": "^4.4.5",
