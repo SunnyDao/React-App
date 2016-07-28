@@ -6,9 +6,9 @@ var config = {
 		path.resolve(__dirname, 'app/index.js')
 	],
 	output:{
-		path:path.resolve(__dirname,'dist'),
+		path:path.resolve(__dirname,'build'),
 		filename:'bundle.js',
-		publicPath: "/dist/"
+		publicPath: "/"
 	},
 	module:{
 		loaders:[

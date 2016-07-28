@@ -11,7 +11,7 @@ var server = new webpackDevServer(compiler,{
 	contentBase:'./app',
 	stats:{colors:true}
 })
-config.entry.unshift("webpack-dev-server/client?http://localhost:8080","webpack/hot/dev-server");
+config.entry.unshift("webpack-dev-server/client?http://localhost:8080/","webpack/hot/dev-server");
 server.listen(8080,'localhost',function(err){
 	if(err){
 		console.log(err)
