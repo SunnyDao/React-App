@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev":"webpack-dev-server --progress --profile --colors --hot",
-    "test": "webpack-dev-server --hot --inline"
+    "dev": "webpack-dev-server --progress --profile --colors --inline"
   },
   "author": "oscar",
   "license": "ISC",
@@ -34,6 +32,7 @@
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "redbox-react": "^1.2.10",
+    "redux": "^3.5.2",
     "redux-devtools": "^3.3.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
