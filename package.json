@@ -1,42 +1,46 @@
 {
-  "name": "react-app",
+  "name": "reactapp",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "webpack-dev-server --progress --profile --colors --inline"
+  "description": "react app",
+  "main": "server.js",
+  "directories": {
+    "example": "example"
   },
-  "author": "oscar",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-core": "^6.7.4",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-react-transform": "^2.0.2",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-react": "^6.5.0",
-    "bower": "^1.7.7",
-    "css-loader": "^0.23.1",
-    "file-loader": "^0.8.5",
-    "gulp": "^3.9.1",
-    "gulp-webpack": "^1.5.0",
-    "html-webpack-plugin": "^2.14.0",
-    "jshint": "^2.9.1",
-    "jshint-loader": "^0.8.3",
-    "jsx-loader": "^0.13.2",
-    "less": "^2.6.1",
-    "less-loader": "^2.2.3",
-    "open-browser-webpack-plugin": "0.0.2",
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1",
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-react-transform": "^2.0.2",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "bower": "^1.7.9",
+    "html-webpack-plugin": "^2.24.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "open-browser-webpack-plugin": "^0.0.2",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
-    "redbox-react": "^1.2.10",
-    "redux": "^3.5.2",
-    "redux-devtools": "^3.3.1",
+    "redux-logger": "^2.7.0",
+    "redux-thunk": "^2.1.0",
     "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.14.1"
-  }
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.oschina.net/oscarz/React-App.git"
+  },
+  "author": "oscar",
+  "license": "ISC"
 }
