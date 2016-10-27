@@ -5,6 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
 	entry: {
+		vendor:['react','react-dom','redux'],
 		index:[
 			"webpack/hot/only-dev-server",
 			"webpack-dev-server/client?http://localhost:8080",
@@ -32,11 +33,19 @@ var config = {
 		extensions: ['', '.js', '.jsx']
 	},
 	plugins: [
+		//HMR热加载
 		new webpack.HotModuleReplacementPlugin(),
+		//错误不打断编译
+		new webpack.NoErrorsPlugin(),
+		//提取模块公共
+		new webpack.optimize.CommonsChunkPlugin("vendor","common.bundle.js"),
+		//生成HTML代码
 		new HtmlWebpackPlugin({
 			title:'hello react',
 			template:path.resolve(__dirname, 'app/index.html')
-		})
+		}),
+		//浏览器打开
+		new OpenBrowserPlugin({ url: 'http://localhost:8080' })//浏览器打开
 	]
 };
 

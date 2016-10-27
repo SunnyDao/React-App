@@ -2,8 +2,7 @@
 const webpack = require('webpack');
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const webpackDevServer = require('webpack-dev-server');
-const config = require('./webpack.config.js';
-const server;
+const config = require('./webpack.config.js');
 const isDeveloping = true;
 const port = 8080;
 
@@ -18,6 +17,7 @@ function baseConfig(config, contentBase) {
 	});
 }
 
+let server;
 if(isDeveloping) {
 	server = baseConfig(config, "/app");
 	console.log("development mode...");
