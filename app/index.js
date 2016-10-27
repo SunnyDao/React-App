@@ -1,13 +1,11 @@
-/*import React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore } from 'redux';
 
-import Index from './components/index/Index';
+import Index from './components/index';
 
 ReactDOM.render(
   <Index />,
   document.getElementById('example')
-);*/
-document.getElementById('app').innerHTML = 'hello world';
-
-
+);
+/*const app = document.getElementById('example');
+app.innerHTML = '<h1>hello world!!</h1>';*/

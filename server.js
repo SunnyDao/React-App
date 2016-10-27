@@ -1,23 +1,31 @@
 /*server.js */
-var webpack = require('webpack');
-var webpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config.js');
+const webpack = require('webpack');
+const webpackDevMiddleware = require("webpack-dev-middleware");
+const webpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.config.js';
+const server;
+const isDeveloping = true;
+const port = 8080;
 
-var compiler = webpack(config);
-var server = new webpackDevServer(compiler, {
-	historyApiFallback: true,
-	hot: true,
-	inline: true,
-	progress: true,
-	contentBase: './app',
-	stats: { colors: true }
-});
+function baseConfig(config, contentBase) {
+	return new webpackDevServer(webpack(config), {
+		historyApiFallback: true,
+		hot: true,
+		inline: true,
+		progress: true,
+		contentBase: contentBase,
+		stats: { colors: true } // 用颜色标识
+	});
+}
 
-config.entry.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
+if(isDeveloping) {
+	server = baseConfig(config, "/app");
+	console.log("development mode...");
+}
 
-server.listen(8080, "localhost", function(err) {
+server.listen(port, "localhost", function(err) {
 	if(err) {
 		console.log(err);
 	}
-	console.log('Listening at localhost:8080...');
+	console.log('Listening at localhost:'+port+'...');
 });
