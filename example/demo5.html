@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>React-Demo</title>
+</head>
+<body>
+
+<script type="text/javascript" src="./bower_components/react/react.js"></script>
+<script type="text/javascript" src="./bower_components/react/react-dom.js"></script>
+<script src="./build/bowers.min.js"></script>
+
+<div id="example"></div>
+<script type="text/babel">
+var names=['AAAA','BBBB','CCCC'];
+
+var HellpWorld = React.createClass({
+	render:function(){
+		return (
+			<div>hello,{this.props.name[0]}</div>
+		)
+	}
+});
+ReactDOM.render(
+	<HellpWorld name={names}/>,
+	document.getElementById('example')
+);
+</script>
+	
+</body>
+</html>
