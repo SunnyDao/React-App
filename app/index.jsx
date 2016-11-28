@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import Counter from './components/Counter/';
+import counter from './reducers';
 
-import configureStore from './store';
-import router from './routes'
+const store = createStore(counter);
+const rootElement = document.getElementById('example');
 
-import Index from './components/index';
-
-let store = configureStore();
-let rootElement = document.getElementById('example');
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+const render = () => ReactDOM.render(
+  <Counter
+    value={store.getState()}
+    onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
+    onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
+  />,
   rootElement
-);
-/*const app = document.getElementById('example');
-app.innerHTML = '<h1>hello world!!</h1>';*/
+)
+
+render();
+store.subscribe(render);
