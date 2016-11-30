@@ -1,6 +1,6 @@
 export default function todos (state=[],action){
 	switch (action.type){
-		case 'ADD_TODO':
+		case 'INCREMENT':
 			return state.concat([action.text]);
 		default:
 			return state;
