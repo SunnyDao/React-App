@@ -1,14 +1,10 @@
-import React from 'react';
-import { Button } from 'antd';
+import React, {Component} from 'react';
 
-
-import './index.less';
-
-class Index extends React.Component {
+class Index extends Component {
   render() {
     return (
-      <div className="container">
-      	<h1>hello world</h1>
+      <div>
+        
       </div>
     );
   }
