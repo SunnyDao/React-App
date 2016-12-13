@@ -19,5 +19,9 @@
   "devDependencies": {
     "react": "~15.0.2",
     "vue": "~1.0.24"
+  },
+  "dependencies": {
+    "react": "^15.4.1",
+    "vue": "^2.1.5"
   }
 }

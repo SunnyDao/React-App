@@ -19,12 +19,9 @@ const render = () => ReactDOM.render(
 		onIncrement={() => store.dispatch({ type: 'INCREMENT',text:'user redux'+store.getState().counter})}
 		onDecrement={() => store.dispatch({ type: 'DECREMENT'})}
 	/>,
-  	rootElement,
-  	function(){
-  		console.log(store.getState(),'render')
-  	}
+  	rootElement
 )
 
 render();
 store.subscribe(render);
-console.log(store.getState(),'star')
+//console.log(store.getState(),'star')

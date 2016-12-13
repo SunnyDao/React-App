@@ -14,22 +14,26 @@
 <script type="text/babel">
 var names=['AAAA','BBBB','CCCC'];
 
-var HelloWorld = React.createClass({
+var HelloWorld = React.createClass({2
 	getInitialState:function() {
 		return {liked:true}
 	},
 	handleClick:function(){
 		this.setState({liked:!this.state.liked})
 	},
+	handleConsole:function(){
+		console.log(1);
+	},
 	render:function(){
 		var _this=this,
 			names=[],
 			text=this.state.liked?'aaaaa':'bbbbb';
+		this.handleConsole();
 		this.props.title.forEach(function(name,index){
 			names.push(
 				<li onClick={this.handleClick} key={index}>{name},{text}</li>
 			)
-		}.bind(this))
+		}.bind(this));
 		return (
 			<ul>{names}</ul>
 		)

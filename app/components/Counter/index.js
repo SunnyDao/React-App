@@ -8,9 +8,7 @@ class Counter extends Component {
   }
 
   incrementIfOdd(){
-    if (this.props.value % 2 !== 0) {
-      this.props.onIncrement()
-    }
+    console.log('incrementIfOdd 调用的是',this)
   }
 
   incrementAsync(){
