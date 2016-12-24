@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
-import ListItem from './ListItem';
+import ListItem from '../ListItem';
 
 const propTypes = {
-    item:PropTypes.array.isRequired
+    item:PropTypes.array.isRequired,
 }
 
 function List({items}){

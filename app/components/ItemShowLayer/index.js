@@ -1,3 +1,4 @@
+import React, {PropTypes} from 'react';
 import marked from 'marked';
 
 const propTypes = {
@@ -13,9 +14,9 @@ function ItemShowLayer({item}){
         )
     }
 
-    let content = marked(itme.content);
+    let content = marked(item.content);
 
-    retunr(
+    return(
         <div className="item-layer-component">
             <div className="control-area">
                 <button className="btn btn-edit">编辑</button>

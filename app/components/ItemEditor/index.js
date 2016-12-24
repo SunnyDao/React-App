@@ -26,7 +26,7 @@ class ItemEditor extends React.Component {
         };
 
         return (
-            <div className="col-md-8 item-editor-component">
+            <div>
             <div className="control-area">
                 <button onClick={save} className="btn btn-success">{saveText}</button>
                 <button onClick={onCancel} className="btn secondary">取消</button>

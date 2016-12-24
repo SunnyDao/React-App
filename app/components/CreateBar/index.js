@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 
 const propTypes = {
-  onClick: PropTypes.func.isRequired,
+  
 };
 
-function CreateBar({ onClick }) {
+function CreateBar() {
   return (
-    <a href="#" onClick={onClick} className="list-group-item create-bar-component">
+    <a href="#" className="list-group-item create-bar-component">
       + 创建新的文章
     </a>
   );

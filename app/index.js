@@ -7,8 +7,17 @@ import createLogger from 'redux-logger';
 import Counter from './components/Counter/';
 import reducer from './reducers/index';
 
+import DeskMark from './components/Deskmark';
 
-const logger = createLogger();
+
+ReactDOM.render(
+	<DeskMark />,
+	document.getElementById('example'),
+	()=>{
+		console.log('111')
+	}
+)
+/*const logger = createLogger();
 
 const store = createStore(reducer,applyMiddleware(logger));
 const rootElement = document.getElementById('example');
@@ -19,9 +28,12 @@ const render = () => ReactDOM.render(
 		onIncrement={() => store.dispatch({ type: 'INCREMENT',text:'user redux'+store.getState().counter})}
 		onDecrement={() => store.dispatch({ type: 'DECREMENT'})}
 	/>,
-  	rootElement
+  	rootElement,
+	function(){
+		console.log(store.getState(),'render')
+	}
 )
 
 render();
 store.subscribe(render);
-//console.log(store.getState(),'star')
+console.log(store.getState(),'star')*/
