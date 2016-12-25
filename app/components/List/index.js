@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import ListItem from '../ListItem';
 
+import './style.less'
+
 const propTypes = {
     item:PropTypes.array.isRequired,
 }
