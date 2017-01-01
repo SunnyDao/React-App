@@ -11,10 +11,48 @@ import './style.less';
 export default class App extends React.Component {
 
     constructor(){
-        super()
+        super();
+        this.state={
+            items:[],
+            selectedId:null,
+            editing:false,
+        }
+        this.saveItem = this.saveItem.bind(this);
+        this.selectItem= this.selectItem.bind(this);
+        this.createItem= this.createItem.bind(this);
+    };
+    saveItem(item){
+        let items=this.state.items;
+
+        item.id=uuid.v4();
+        item.tiem=new Date().getTime();
+
+        items= {...items,item};
+
+        this.setState({
+            items:items
+        })
+    };
+
+    selectItem(id){
+        if(id === this.state.selectedId){
+            return;
+        }
+        this.setState({
+            selectedId:id,
+            editing:false
+        })
+    }
+
+    createItem(){
+        this.setState({
+            selectedId:null,
+            editing:true
+        })
     }
 
     render() {
+        let{items,selectedId,editing}=this.state;
         const items= [
             {
                 "id":"1",
