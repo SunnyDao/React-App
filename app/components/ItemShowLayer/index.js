@@ -2,10 +2,12 @@ import React, {PropTypes} from 'react';
 import marked from 'marked';
 
 const propTypes = {
-    item:PropTypes.object
+    item:PropTypes.object,
+    onEdit:PropTypes.func.isRequired,
+    onDelete:PropTypes.func.isRequired
 }
 
-function ItemShowLayer({item}){
+function ItemShowLayer({item,onEdit,onDelete}){
     if(!item || !item.id){
         return (
             <div className="item-layer-component">
@@ -19,8 +21,8 @@ function ItemShowLayer({item}){
     return(
         <div className="item-layer-component">
             <div className="control-area">
-                <button className="btn btn-edit">编辑</button>
-                <button className="btn btn-delet">删除</button>
+                <button className="btn btn-edit" onClick={()=>onEdit(item.id)}>编辑</button>
+                <button className="btn btn-delet" onClick={()=>onDelete(item.id)}>删除</button>
             </div>
             <h2>{item.title}</h2>
             <div className="item-test">
