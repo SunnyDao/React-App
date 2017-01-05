@@ -18,6 +18,7 @@ export default class App extends React.Component {
             editing:false,
         }
         this.saveItem = this.saveItem.bind(this);
+        this.editItem = this.editItem.bind(this);
         this.selectItem= this.selectItem.bind(this);
         this.createItem= this.createItem.bind(this);
     };
@@ -32,6 +33,13 @@ export default class App extends React.Component {
         this.setState({
             items:items
         })
+    };
+
+    editItem(id) {
+        this.setState({
+            selectedId: id,
+            editing: true,
+        });
     };
 
     selectItem(id){
@@ -52,20 +60,20 @@ export default class App extends React.Component {
     }
 
     render() {
-        let{items,selectedId,editing}=this.state;
-        const items= [
-            {
-                "id":"1",
-                title:'hello',
-                content:'# test markdown',
-                time:'2016-12-22'
-            },{
-                "id":"2",
-                title:'hello2',
-                content:'# test markdown2',
-                time:'2016-12-23'
-            }
-        ]
+        const {items,selectedId,editing}=this.state;
+        const containerBox = editing
+        ?(
+            <ItemEditor 
+                item={selectedId}
+                onSave={this.saveItem}
+            />
+        )
+        :(
+            <ItemShowLayer 
+                item={selectedId}
+                onEdit={this.editItem}
+            />
+        );
         return (
             <section className="deskmark-component">
             <nav className="navbar">
@@ -78,8 +86,7 @@ export default class App extends React.Component {
                         <List items={items}/>
                     </div>
                     <div className="col-md-9">
-                        <ItemEditor item={items[0]}/>
-                        <ItemShowLayer item={items[0]}/>
+                        {containerBox}
                     </div>
                 </div>
             </div>
