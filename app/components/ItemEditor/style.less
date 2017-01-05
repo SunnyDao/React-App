@@ -1,0 +1,42 @@
+.item-editor-component{
+    padding: 10px;
+    .control-area{
+        float:right;
+        display: inline;
+        >.btn{
+            padding: 5px 10px;
+            border-radius: 3px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+        >.btn.btn-success{
+            background: #4081d6;
+            margin-right: 10px;
+            &:hover{
+                background: #1185d6;
+            }
+        }
+        >.btn.secondary{
+            background: #999999;
+            &:hover{
+                background: #9e9e9e;
+            }
+        }
+    }
+    .edit-area{
+        input,
+        textarea{
+            display: block;
+            border: 1px solid #ddd;
+            padding: 6px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            width: 500px;
+        }
+        textarea{
+            height: 200px;
+            resize: none;
+        }
+    }
+}

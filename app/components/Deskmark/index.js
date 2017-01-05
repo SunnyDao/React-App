@@ -18,30 +18,20 @@ export default class App extends React.Component {
             editing:false,
         }
         this.saveItem = this.saveItem.bind(this);
+        this.cancelEdit = this.cancelEdit.bind(this);
         this.editItem = this.editItem.bind(this);
+        this.deletItem = this.deletItem.bind(this);
         this.selectItem= this.selectItem.bind(this);
         this.createItem= this.createItem.bind(this);
     };
-    saveItem(item){
-        let items=this.state.items;
-
-        item.id=uuid.v4();
-        item.tiem=new Date().getTime();
-
-        items= {...items,item};
-
+    //创建文章
+    createItem(){
         this.setState({
-            items:items
+            selectedId:null,
+            editing:true
         })
-    };
-
-    editItem(id) {
-        this.setState({
-            selectedId: id,
-            editing: true,
-        });
-    };
-
+    }
+    //选择文章
     selectItem(id){
         if(id === this.state.selectedId){
             return;
@@ -52,12 +42,36 @@ export default class App extends React.Component {
         })
     }
 
-    createItem(){
+    //保存文章
+    saveItem(item){
+        let items=this.state.items;
+
+        item.id=uuid.v4();
+        item.tiem=new Date().getTime();
+
+        items = [...items, item];
+
         this.setState({
-            selectedId:null,
-            editing:true
+            items:items
         })
+    };
+    //关闭创建文章
+    cancelEdit() {
+        this.setState({ editing: false });
     }
+    //修改文章
+    editItem(id) {
+        this.setState({
+            selectedId: id,
+            editing: true,
+        });
+    };
+    //删除文章
+    deletItem(){
+        console.log(1)
+    }
+
+    
 
     render() {
         const {items,selectedId,editing}=this.state;
@@ -66,12 +80,14 @@ export default class App extends React.Component {
             <ItemEditor 
                 item={selectedId}
                 onSave={this.saveItem}
+                onCancel={this.cancelEdit}
             />
         )
         :(
             <ItemShowLayer 
                 item={selectedId}
                 onEdit={this.editItem}
+                onDelete={this.deletItem}
             />
         );
         return (

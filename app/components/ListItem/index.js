@@ -8,7 +8,6 @@ const propTypes = {
 
 function ListItem({item}) {
     //let content = marked(item.content);
-
     return (
         <div className="listItem">
             <div className="pic"></div>

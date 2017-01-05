@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import './style.less';
 
 const propTypes = {
     item: PropTypes.object,
@@ -19,22 +20,22 @@ class ItemEditor extends React.Component {
 
         let save = () => {
             onSave({
-            ...item,
-            title: this.refs.title.value,
-            content: this.refs.content.value,
+                ...item,
+                title: this.refs.title.value,
+                content: this.refs.content.value,
             });
         };
 
         return (
-            <div>
-            <div className="control-area">
-                <button onClick={save} className="btn btn-success">{saveText}</button>
-                <button onClick={onCancel} className="btn secondary">取消</button>
-            </div>
-            <div className="edit-area">
-                <input ref="title" placeholder="请填写标题" defaultValue={item.title} />
-                <textarea ref="content" placeholder="请填写内容" defaultValue={item.content} />
-            </div>
+            <div className="item-editor-component">
+                <div className="control-area">
+                    <button onClick={save} className="btn btn-success">{saveText}</button>
+                    <button onClick={onCancel} className="btn secondary">取消</button>
+                </div>
+                <div className="edit-area">
+                    <input ref="title" placeholder="请填写标题" defaultValue={item.title} />
+                    <textarea ref="content" placeholder="请填写内容" defaultValue={item.content} />
+                </div>
             </div>
         );
     }
