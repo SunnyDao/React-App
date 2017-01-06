@@ -4,6 +4,7 @@ var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
+	devtool:'source-map',
 	entry: {
 		vendor:['react','react-dom','redux'],
 		index:[

@@ -21,8 +21,8 @@ export default class App extends React.Component {
         this.cancelEdit = this.cancelEdit.bind(this);
         this.editItem = this.editItem.bind(this);
         this.deletItem = this.deletItem.bind(this);
-        this.selectItem= this.selectItem.bind(this);
         this.createItem= this.createItem.bind(this);
+        this.selectItem= this.selectItem.bind(this);
     };
     //创建文章
     createItem(){
@@ -47,7 +47,7 @@ export default class App extends React.Component {
         let items=this.state.items;
 
         item.id=uuid.v4();
-        item.tiem=new Date().getTime();
+        item.time=new Date().getTime();
 
         items = [...items, item];
 
@@ -99,7 +99,10 @@ export default class App extends React.Component {
                 <div className="row">
                     <div className="col-md-3">
                         <CreateBar onClick={this.createItem} />
-                        <List items={items}/>
+                        <List 
+                            items={this.state.items}
+                            onSelect={this.selectItem}
+                        />
                     </div>
                     <div className="col-md-9">
                         {containerBox}

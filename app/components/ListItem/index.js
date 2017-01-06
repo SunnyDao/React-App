@@ -3,13 +3,14 @@ import marked from 'marked';
 import './style.less';
 
 const propTypes = {
-    item:PropTypes.object.isRequired
+    item:PropTypes.object.isRequired,
+    onClick:PropTypes.func.isRequired
 }
 
-function ListItem({item}) {
+function ListItem({item,onClick}) {
     //let content = marked(item.content);
     return (
-        <div className="listItem">
+        <div className="listItem" onClick={onClick}>
             <div className="pic"></div>
             <div className="con">
                 <h2>{item.title}</h2>
