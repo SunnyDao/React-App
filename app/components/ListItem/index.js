@@ -9,6 +9,9 @@ const propTypes = {
 
 function ListItem({item,onClick}) {
     //let content = marked(item.content);
+    if (item.time) {
+        formatTime = new Date(item.time).toISOString().match(/(\d{4}-\d{2}-\d{2})/)[1];
+    }
     return (
         <div className="listItem" onClick={onClick}>
             <div className="pic"></div>

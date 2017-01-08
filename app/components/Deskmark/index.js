@@ -75,17 +75,18 @@ export default class App extends React.Component {
 
     render() {
         const {items,selectedId,editing}=this.state;
+        const selected = selectedId && items.find(item => item.id === selectedId);
         const containerBox = editing
         ?(
             <ItemEditor 
-                item={selectedId}
+                item={selected}
                 onSave={this.saveItem}
                 onCancel={this.cancelEdit}
             />
         )
         :(
             <ItemShowLayer 
-                item={selectedId}
+                item={selected}
                 onEdit={this.editItem}
                 onDelete={this.deletItem}
             />
