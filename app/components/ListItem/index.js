@@ -8,7 +8,7 @@ const propTypes = {
 }
 
 function ListItem({item,onClick}) {
-    //let content = marked(item.content);
+    let formatTime = '未知时间';
     if (item.time) {
         formatTime = new Date(item.time).toISOString().match(/(\d{4}-\d{2}-\d{2})/)[1];
     }

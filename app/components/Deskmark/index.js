@@ -45,14 +45,23 @@ export default class App extends React.Component {
     //保存文章
     saveItem(item){
         let items=this.state.items;
-
-        item.id=uuid.v4();
-        item.time=new Date().getTime();
-
-        items = [...items, item];
-
+        if(!item.id){
+            item.id=uuid.v4();
+            item.time=new Date().getTime();
+            items = [...items, item];
+        }else{
+            items = items.map(
+                exist => (
+                    exist.id === item.id
+                    ? {...exist,...item,}
+                    : exist
+                )
+            );
+        }
         this.setState({
-            items:items
+            items:items,
+            selectedId: item.id,
+            editing: false,
         })
     };
     //关闭创建文章
@@ -75,7 +84,7 @@ export default class App extends React.Component {
 
     render() {
         const {items,selectedId,editing}=this.state;
-        const selected = selectedId && items.find(item => item.id === selectedId);
+        const selected = selectedId && items.find(item => item.id === selectedId);//es6语法
         const containerBox = editing
         ?(
             <ItemEditor 
