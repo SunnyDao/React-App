@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import marked from 'marked';
+import './style.less'
 
 const propTypes = {
     item:PropTypes.object,

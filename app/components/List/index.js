@@ -5,14 +5,16 @@ import './style.less'
 
 const propTypes = {
     item:PropTypes.array.isRequired,
+    onClick:PropTypes.func.isRequired
 }
 
-function List({items}){
+function List({items,onSelect}){
     const itemsCom = items.map(
         (item) => (
             <ListItem
                 item={item}
                 key={item.id}
+                onClick={()=>onSelect(item.id)}
             />
         )
     )

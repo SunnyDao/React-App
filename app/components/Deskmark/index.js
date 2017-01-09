@@ -21,8 +21,8 @@ export default class App extends React.Component {
         this.cancelEdit = this.cancelEdit.bind(this);
         this.editItem = this.editItem.bind(this);
         this.deletItem = this.deletItem.bind(this);
-        this.selectItem= this.selectItem.bind(this);
         this.createItem= this.createItem.bind(this);
+        this.selectItem= this.selectItem.bind(this);
     };
     //创建文章
     createItem(){
@@ -45,14 +45,23 @@ export default class App extends React.Component {
     //保存文章
     saveItem(item){
         let items=this.state.items;
-
-        item.id=uuid.v4();
-        item.tiem=new Date().getTime();
-
-        items = [...items, item];
-
+        if(!item.id){
+            item.id=uuid.v4();
+            item.time=new Date().getTime();
+            items = [...items, item];
+        }else{
+            items = items.map(
+                exist => (
+                    exist.id === item.id
+                    ? {...exist,...item,}
+                    : exist
+                )
+            );
+        }
         this.setState({
-            items:items
+            items:items,
+            selectedId: item.id,
+            editing: false,
         })
     };
     //关闭创建文章
@@ -75,17 +84,18 @@ export default class App extends React.Component {
 
     render() {
         const {items,selectedId,editing}=this.state;
+        const selected = selectedId && items.find(item => item.id === selectedId);//es6语法
         const containerBox = editing
         ?(
             <ItemEditor 
-                item={selectedId}
+                item={selected}
                 onSave={this.saveItem}
                 onCancel={this.cancelEdit}
             />
         )
         :(
             <ItemShowLayer 
-                item={selectedId}
+                item={selected}
                 onEdit={this.editItem}
                 onDelete={this.deletItem}
             />
@@ -99,7 +109,10 @@ export default class App extends React.Component {
                 <div className="row">
                     <div className="col-md-3">
                         <CreateBar onClick={this.createItem} />
-                        <List items={items}/>
+                        <List 
+                            items={this.state.items}
+                            onSelect={this.selectItem}
+                        />
                     </div>
                     <div className="col-md-9">
                         {containerBox}
