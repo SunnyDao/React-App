@@ -5,9 +5,11 @@ import {Provider} from 'react-redux';
 import createLogger from 'redux-logger';
 
 import Counter from './components/Counter/';
-import reducer from './reducers/index';
 
 import DeskMark from './components/Deskmark';
+import rootReducer from './reducers';
+import * as actionCreators from 'actions';
+
 
 
 ReactDOM.render(
@@ -17,6 +19,10 @@ ReactDOM.render(
 		console.log('111')
 	}
 )
+function render() {
+	const state = store.getState();
+}
+
 /*const logger = createLogger();
 
 const store = createStore(reducer,applyMiddleware(logger));
