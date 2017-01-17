@@ -18,7 +18,7 @@ function ListItem({item,onClick}) {
             <div className="con">
                 <h2>{item.title}</h2>
                 <p>{item.content}</p>
-                <p className="time"><span>{item.time}</span></p>
+                <p className="time"><span>{formatTime}</span></p>
             </div>
         </div>
     );

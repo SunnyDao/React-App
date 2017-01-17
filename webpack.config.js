@@ -3,6 +3,9 @@ var webpack = require('webpack');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const ROOT_PATH = path.resolve(__dirname);
+const APP_PATH = path.resolve(ROOT_PATH, 'app')
+
 var config = {
 	devtool:'source-map',
 	entry: {
@@ -31,7 +34,8 @@ var config = {
 		]
 	},
 	resolve:{
-		extensions: ['', '.js', '.jsx']
+		extensions: ['', '.js', '.jsx'],
+		root: APP_PATH
 	},
 	plugins: [
 		//HMR热加载
