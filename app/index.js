@@ -8,7 +8,7 @@ import Logger from 'redux-logger';
 import Deskmark from 'components/ArtPage/Deskmark';
 import rootReducer from 'reducers/artPage';
 import * as actionCreators from 'actions/artPage';
-import App from './containers/art';
+//import App from './containers/art';
 
 const store = createStore(rootReducer);
 
