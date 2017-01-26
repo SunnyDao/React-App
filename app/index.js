@@ -20,16 +20,14 @@ const App = connect(
   })
 )(Deskmark);
 
-function render() {
-	ReactDOM.render(
-		<Provider store={store}>
-			<App />
-		</Provider>,
-		rootElemtn,
-		function(){
-			console.log('初次渲染成功');
-		}
-	)
-}
-render();
+
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	rootElemtn,
+	function(){
+		console.log('初次渲染成功');
+	}
+)
 //store.subscribe(render);
