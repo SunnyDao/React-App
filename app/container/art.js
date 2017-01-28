@@ -19,15 +19,15 @@ Art.propTypes = {
 }
 
 function mapStateToProps(state) {
-  return {
-    todos: state.art
-  }
+    return {
+        arts: state.art
+    }
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ArtActions, dispatch)
-  }
+    return {
+        actions: bindActionCreators(ArtActions, dispatch)
+    }
 }
 
 export default connect(

@@ -5,21 +5,12 @@ import { bindActionCreators,applyMiddleware, createStore ,compose} from 'redux';
 import {Provider,connect} from 'react-redux';
 import Logger from 'redux-logger';
 
-import Deskmark from 'components/ArtPage/Deskmark';
 import rootReducer from 'reducers/artPage';
 import * as actionCreators from 'actions/artPage';
-//import App from './containers/art';
+import App from './containers/art';
 
 const store = createStore(rootReducer);
-
 const rootElemtn = document.getElementById('example');
-const App = connect(
-  state => ({ state }),
-  dispatch => ({
-    actions: bindActionCreators(actionCreators, dispatch),
-  })
-)(Deskmark);
-
 
 ReactDOM.render(
 	<Provider store={store}>
