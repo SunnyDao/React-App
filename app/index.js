@@ -9,6 +9,8 @@ import rootReducer from 'reducers/artPage';
 import * as actionCreators from 'actions/artPage';
 import App from './containers/art';
 
+import router from 'router';
+
 const store = createStore(rootReducer);
 const rootElemtn = document.getElementById('example');
 
