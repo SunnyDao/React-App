@@ -5,6 +5,11 @@ import Header from '../components/Header'
 import MainSection from '../components/MainSection'
 import * as TodoActions from '../actions'
 
+@connect(
+  state => ({ counter: state.art }),
+  ActionCreators
+)
+
 class Art extends Component {
     render() {
         return (
