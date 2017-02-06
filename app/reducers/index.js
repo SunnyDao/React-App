@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';
-import todos from './todos';
+import artPage from './artPage';
 import counter from './counter';
 
 export default combineReducers({
-	todos,
+	artPage,
 	counter
 })
 

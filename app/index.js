@@ -1,26 +1,21 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { bindActionCreators,applyMiddleware, createStore ,compose} from 'redux';
-import {Provider,connect} from 'react-redux';
-import Logger from 'redux-logger';
+import {Provider} from 'react-redux';
 
-import rootReducer from 'reducers/artPage';
-import * as actionCreators from 'actions/artPage';
-import App from './containers/art';
+import App from 'containers/Index';
+import configStore from 'store/configStore';
 
-import router from 'router';
 
-const store = createStore(rootReducer);
-const rootElemtn = document.getElementById('example');
+const store = configStore();
+const rootElement = document.getElementById('example');
 
 ReactDOM.render(
 	<Provider store={store}>
 		<App />
 	</Provider>,
-	rootElemtn,
+	rootElement,
 	function(){
 		console.log('初次渲染成功');
 	}
 )
-//store.subscribe(render);
