@@ -3,15 +3,15 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from '../reducers';
 
-
+/*compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+)*/
 export default function configStorein(initialState){
     const store = createStore(
         rootReducer,
         initialState,
-        compose(
-            applyMiddleware(thunk,logger),
-            window.devToolsExtension ? window.devToolsExtension() : f => f
-        )
+        applyMiddleware(thunk)
     );
 
     if (module.hot) {
