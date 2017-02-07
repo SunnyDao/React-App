@@ -101,11 +101,7 @@ export default class Deskmark extends React.Component {
             />
         );
         return (
-            <section className="deskmark-component">
-            <nav className="navbar">
-                <a className="navbar-brand" href="#">Deskmark App</a>
-            </nav>
-            <div className="container">
+            <div className="ArtComponents">
                 <div className="row">
                     <div className="col-md-3">
                         <CreateBar onClick={this.createItem} />
@@ -119,7 +115,6 @@ export default class Deskmark extends React.Component {
                     </div>
                 </div>
             </div>
-            </section>
         );
     }
 }
