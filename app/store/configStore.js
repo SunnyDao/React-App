@@ -11,7 +11,10 @@ export default function configStorein(initialState){
     const store = createStore(
         rootReducer,
         initialState,
-        applyMiddleware(thunk)
+        compose(
+            applyMiddleware(thunk),
+            window.devToolsExtension ? window.devToolsExtension() : f => f
+        )
     );
 
     if (module.hot) {

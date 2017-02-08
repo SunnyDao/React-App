@@ -20,21 +20,21 @@ function Counter({ increment, incrementIfOdd, incrementAsync, decrement, counter
 }
 
 Counter.propTypes = {
-  increment: PropTypes.func.isRequired,
-  incrementIfOdd: PropTypes.func.isRequired,
-  incrementAsync: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired,
-  counter: PropTypes.number.isRequired,
+    increment: PropTypes.func.isRequired,
+    incrementIfOdd: PropTypes.func.isRequired,
+    incrementAsync: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired,
+    counter: PropTypes.number.isRequired,
 };
 
 function mapStateToProps(state) {
-  return {
-    counter: state.counter
-  };
+    return {
+        counter: state.counter
+    };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
+    return bindActionCreators(CounterActions, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

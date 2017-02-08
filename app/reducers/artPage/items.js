@@ -1,31 +1,15 @@
 import * as ActionTypes from '../../actions/artPage';
 
 const initialState = {
-  isFetching: false,
-  data: [],
-};
-
-const { pendingOf, fulfilledOf } = ActionTypes;
+    selectedId: null,
+    isEditing: false,
+}
 
 export default function (state = initialState, action) {
-  const { type, payload } = action;
-
-  switch (type) {
-
-    case pendingOf(ActionTypes.FETCH_ENTRY_LIST):
-      return {
-        ...state,
-        isFetching: true,
-      };
-
-    case fulfilledOf(ActionTypes.FETCH_ENTRY_LIST):
-      return {
-        ...state,
-        isFetching: false,
-        data: payload,
-      };
-
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case ActionTypes.ART_CREATE_ITEM:
+            return Object.assign({},state,{selectedId:null,isEditing:true})
+        default:
+            return state;
+    }
 }
