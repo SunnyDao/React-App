@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{PropTypes} from 'react';
 import uuid from 'uuid';
 
 import CreateBar from '../CreateBar';
@@ -7,6 +7,11 @@ import ItemEditor from '../ItemEditor'
 import ItemShowLayer from '../ItemShowLayer'
 
 import './style.less';
+
+const propTypes = {
+    article: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired,
+};
 
 export default class Deskmark extends React.Component {
 
@@ -85,7 +90,11 @@ export default class Deskmark extends React.Component {
     render() {
         const {items,selectedId,editing}=this.state;
         const selected = selectedId && items.find(item => item.id === selectedId);//es6语法
-        const containerBox = editing
+
+        const {article,actions}=this.props;
+        const {isEditing,idSelected} = article.editor;
+
+        const containerBox = isEditing
         ?(
             <ItemEditor 
                 item={selected}
@@ -104,7 +113,7 @@ export default class Deskmark extends React.Component {
             <div className="ArtComponents">
                 <div className="row">
                     <div className="col-md-3">
-                        <CreateBar onClick={this.createItem} />
+                        <CreateBar onClick={actions.artCreateItem} />
                         <List 
                             items={this.state.items}
                             onSelect={this.selectItem}

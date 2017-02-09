@@ -1,14 +1,15 @@
 import * as ActionTypes from '../../actions/artPage';
 
-const initialState = {
-    selectedId: null,
+const initialEditorState = {
+    idSelected: null,
     isEditing: false,
 }
 
-export default function (state = initialState, action) {
+export default function editor(state = initialEditorState, action) {
     switch (action.type) {
         case ActionTypes.ART_CREATE_ITEM:
-            return Object.assign({},state,{selectedId:null,isEditing:true})
+            console.log(Object.assign({},state,{idSelected:null,isEditing:true}))
+            return Object.assign({},state,{idSelected:null,isEditing:true})
         default:
             return state;
     }

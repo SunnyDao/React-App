@@ -1,8 +1,9 @@
 import {combineReducers} from 'redux';
-//import artPage from './artPage';
+import article from './artPage';
 import counter from './counter';
 
 const rootReducer = combineReducers({
+    article,
   	counter
 });
 
