@@ -85,7 +85,9 @@ export default class Deskmark extends React.Component {
         console.log(1)
     }
 
-    
+    compoentDidMount(){
+        this.props.actions.fetchEntryList;
+    }
 
     render() {
         const {items,selectedId,editing}=this.state;

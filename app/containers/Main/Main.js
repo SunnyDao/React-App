@@ -13,7 +13,7 @@ function Main(props) {
                 <div className="nav-body">
                     <nav>
                     <IndexLink to="/" activeClassName="active">首页</IndexLink>
-                    <Link to="/artpage" activeClassName="active">文章</Link>
+                    <Link to="/article" activeClassName="active">文章</Link>
                     <Link to="/counter" activeClassName="active">图书</Link>
                     <Link to="/about" activeClassName="active">关于我</Link>
                     </nav>

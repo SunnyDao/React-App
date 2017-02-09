@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as CounterActions from '../actions/counter';
+import * as CounterActions from '../../actions/counter';
 
 function Counter({ increment, incrementIfOdd, incrementAsync, decrement, counter }) {
   return (
