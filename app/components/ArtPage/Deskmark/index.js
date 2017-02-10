@@ -87,15 +87,9 @@ export default class Deskmark extends React.Component {
     }
 
     componentDidMount(){
-        axios.get('/mock/article/items.json')
-        .then(function(res){
-            if(res.status=='200'){
-                actions.fetchEntryList()
-            }
-        })
-        .catch(function(err){
-            console.log('Error:'+err)
-        })
+        const {actions}= this.props;
+        console.log(actions);
+        actions.fetchEntryList('/mock/article/items.json')
     }
 
     render() {

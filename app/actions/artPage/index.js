@@ -21,9 +21,19 @@ export function updataArtItems(items){
         items
     }
 }
-export function fetchEntryList() {
-    return dispatch => {
-        storage.getAll()
-        .then(items => dispatch(updateEntryList(items)));
+export function fetchEntryList(url) {
+    return (dispatch) => {
+        return fetchItems(url)
+        .then(function(res){
+            if(res.status=='200'){
+                dispatch(updataArtItems(res.data))
+            }
+        })
+        .catch(function(err){
+            console.log('Error:'+err)
+        })
     };
+}
+function fetchItems(url){
+    return axios.get(url);
 }
