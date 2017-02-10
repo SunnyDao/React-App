@@ -1,5 +1,6 @@
 import React,{PropTypes} from 'react';
 import uuid from 'uuid';
+import axios from 'axios';
 
 import CreateBar from '../CreateBar';
 import List from '../List';
@@ -85,8 +86,14 @@ export default class Deskmark extends React.Component {
         console.log(1)
     }
 
-    compoentDidMount(){
-        this.props.actions.fetchEntryList;
+    componentDidMount(){
+        axios.get('/mock/article/items.json')
+        .then(function(res){
+            console.log(res)
+        })
+        .catch(function(err){
+            console.log('Error:'+err)
+        })
     }
 
     render() {

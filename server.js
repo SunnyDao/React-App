@@ -19,7 +19,7 @@ function baseConfig(config, contentBase) {
 
 let server;
 if(isDeveloping) {
-	server = baseConfig(config, "/app");
+	server = baseConfig(config, "app/");
 	console.log("development mode...");
 }
 
