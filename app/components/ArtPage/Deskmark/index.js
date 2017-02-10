@@ -87,8 +87,7 @@ export default class Deskmark extends React.Component {
     }
 
     componentDidMount(){
-        const {actions}= this.props;
-        console.log(actions);
+        const {article,actions}= this.props;
         actions.fetchEntryList('/mock/article/items.json')
     }
 
@@ -98,6 +97,7 @@ export default class Deskmark extends React.Component {
 
         const {article,actions}=this.props;
         const {isEditing,idSelected} = article.editor;
+        const itemes=article.items;
 
         const containerBox = isEditing
         ?(
@@ -120,7 +120,7 @@ export default class Deskmark extends React.Component {
                     <div className="col-md-3">
                         <CreateBar onClick={actions.artCreateItem} />
                         <List 
-                            items={this.state.items}
+                            items={itemes}
                             onSelect={this.selectItem}
                         />
                     </div>

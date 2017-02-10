@@ -4,6 +4,7 @@ import axios from 'axios';
 export const ART_CREATE_ITEM = 'ART_CREATE_ITEM';
 export const ART_DELET_ITEM = 'ART_DELET_ITEM';
 export const ART_UPDATA_ITEMS = 'ART_UPDATA_ITEMS';
+export const UPDATE_ENTRY_LIST = 'UPDATE_ENTRY_LIST';
 
 export function artCreateItem(){
     return {
@@ -17,7 +18,7 @@ export function artDeletItem(){
 }
 export function updataArtItems(items){
     return {
-        type:ART_UPDATA_ITEMS,
+        type:UPDATE_ENTRY_LIST,
         items
     }
 }
@@ -26,7 +27,7 @@ export function fetchEntryList(url) {
         return fetchItems(url)
         .then(function(res){
             if(res.status=='200'){
-                dispatch(updataArtItems(res.data))
+                dispatch(updataArtItems(res.data.data))
             }
         })
         .catch(function(err){
