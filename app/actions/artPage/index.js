@@ -1,10 +1,11 @@
 import fetch from 'isomorphic-fetch';
 import axios from 'axios';
+import uuid from 'uuid';
 
 export const ART_CREATE_ITEM = 'ART_CREATE_ITEM';
 export const ART_DELET_ITEM = 'ART_DELET_ITEM';
 export const ART_UPDATA_ITEMS = 'ART_UPDATA_ITEMS';
-export const UPDATE_ENTRY_LIST = 'UPDATE_ENTRY_LIST';
+export const ART_SAVE_ITEM = 'ART_SAVE_ITEM';
 
 export function artCreateItem(){
     return {
@@ -18,10 +19,31 @@ export function artDeletItem(){
 }
 export function updataArtItems(items){
     return {
-        type:UPDATE_ENTRY_LIST,
+        type:ART_UPDATA_ITEMS,
         items
     }
 }
+
+export function artSaveItems(item,url){
+    const {title,content,id} = item;
+    return (dispatch)=>{
+        if(url){
+            return fetchItems(url)
+            .then(function(res){
+                console.log('seccess')
+            })
+            .catch(function(err){
+                console.log('Error:'+err)
+            })
+        }else{
+            if(!id){
+                //
+
+            }
+        }
+    }
+}
+
 export function fetchEntryList(url) {
     return (dispatch) => {
         return fetchItems(url)

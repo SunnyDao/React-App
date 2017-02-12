@@ -92,24 +92,25 @@ export default class Deskmark extends React.Component {
     }
 
     render() {
-        const {items,selectedId,editing}=this.state;
-        const selected = selectedId && items.find(item => item.id === selectedId);//es6语法
+        //const {items,selectedId,editing}=this.state;
+        //const selected = selectedId && items.find(item => item.id === selectedId);//es6语法
 
         const {article,actions}=this.props;
         const {isEditing,idSelected} = article.editor;
-        const itemes=article.items;
+        const items=article.items;
+        const item = items.find(item=>item.id===idSelected);
 
         const containerBox = isEditing
         ?(
             <ItemEditor 
-                item={selected}
-                onSave={this.saveItem}
+                item={idSelected}
+                onSave={actions.artSaveItems}
                 onCancel={this.cancelEdit}
             />
         )
         :(
             <ItemShowLayer 
-                item={selected}
+                item={idSelected}
                 onEdit={this.editItem}
                 onDelete={this.deletItem}
             />
@@ -120,7 +121,7 @@ export default class Deskmark extends React.Component {
                     <div className="col-md-3">
                         <CreateBar onClick={actions.artCreateItem} />
                         <List 
-                            items={itemes}
+                            items={items}
                             onSelect={this.selectItem}
                         />
                     </div>
