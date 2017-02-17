@@ -104,6 +104,7 @@ export default class Deskmark extends React.Component {
         ?(
             <ItemEditor 
                 item={idSelected}
+                items={items}
                 onSave={actions.artSaveItems}
                 onCancel={this.cancelEdit}
             />

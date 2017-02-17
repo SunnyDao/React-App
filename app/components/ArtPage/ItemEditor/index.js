@@ -3,13 +3,14 @@ import './style.less';
 
 const propTypes = {
     item: PropTypes.object,
+    items:PropTypes.array.isRequired,
     onSave: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
 };
 
 class ItemEditor extends React.Component {
     render() {
-        const { onSave, onCancel } = this.props;
+        const { onSave, onCancel , items } = this.props;
 
         const item = this.props.item || {
             title: '',
@@ -23,7 +24,7 @@ class ItemEditor extends React.Component {
                 ...item,
                 title: this.refs.title.value,
                 content: this.refs.content.value,
-            });
+            },items);
         };
 
         return (

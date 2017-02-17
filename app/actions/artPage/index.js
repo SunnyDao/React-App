@@ -17,14 +17,22 @@ export function artDeletItem(){
         type:ART_DELET_ITEM
     }
 }
-export function updataArtItems(items){
+//更新列表
+export function updateArtItems(items){
     return {
         type:ART_UPDATA_ITEMS,
         items
     }
 }
+//新增列表
+export function updateArtSaveItem(id){
+    return {
+        type:ART_SAVE_ITEM,
+        id
+    }
+}
 
-export function artSaveItems(item,url){
+export function artSaveItems(item,items,url){
     const {title,content,id} = item;
     return (dispatch)=>{
         if(url){
@@ -36,9 +44,15 @@ export function artSaveItems(item,url){
                 console.log('Error:'+err)
             })
         }else{
-            if(!id){
-                //
-                
+            if(!id){//有id走更新流程，没有id走保存流程
+                const newitem={
+                    id:uuid.v4(),
+                    time:new Date().getTime(),
+                    title,
+                    content
+                };
+                items = [...items, newitem];
+                return dispatch(updateArtItems(items))
             }
         }
     }
@@ -49,7 +63,7 @@ export function fetchEntryList(url) {
         return fetchItems(url)
         .then(function(res){
             if(res.status=='200'){
-                dispatch(updataArtItems(res.data.data))
+                dispatch(updateArtItems(res.data.data))
             }
         })
         .catch(function(err){
@@ -59,4 +73,34 @@ export function fetchEntryList(url) {
 }
 function fetchItems(url){
     return axios.get(url);
+}
+
+
+
+
+
+
+export const UPDATE_SAVED_ENTRY = 'UPDATE_SAVED_ENTRY';
+
+function updateSavedEntry(id) {
+  return { type: UPDATE_SAVED_ENTRY, id };
+}
+
+export function saveEntry(item) {
+  const { title, content, id } = item;
+  return dispatch => {
+    if (id) {
+      // 更新流程
+      storage.updateEntry(id, title, content)
+        .then(() => dispatch(updateSavedEntry(id)))
+        .then(() => storage.getAll())
+        .then(items => dispatch(updateEntryList(items)));
+    } else {
+      // 创建流程
+      storage.insertEntry(title, content)
+        .then(inserted => dispatch(updateSavedEntry(inserted.id)))
+        .then(() => storage.getAll())
+        .then(items => dispatch(updateEntryList(items)));
+    }
+  };
 }
