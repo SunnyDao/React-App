@@ -38,7 +38,7 @@ export function artSaveItems(item,url){
         }else{
             if(!id){
                 //
-
+                
             }
         }
     }
