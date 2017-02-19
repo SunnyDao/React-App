@@ -7,18 +7,9 @@ export const ART_DELET_ITEM = 'ART_DELET_ITEM';
 export const ART_UPDATA_ITEMS = 'ART_UPDATA_ITEMS';
 export const ART_SAVE_ITEM = 'ART_SAVE_ITEM';
 
-function getAll() {
-    return new Promise((resolve) => {
-        const results = STORAGE.getItem(STORAGE_KEY);
-        try {
-            resolve(
-                results
-                ? JSON.parse(results)
-                : []
-            );
-        } catch (e) {
-        resolve([]);
-        }
+function createArtItem() {
+    return new Promise((resolve,reject) => {
+        setTimeout(()=>resolve(),1000)
     });
 }
 
@@ -67,7 +58,9 @@ export function artSaveItems(item,items,url){
                     content
                 };
                 items = [...items, newitem];
-                return dispatch(updateArtItems(items))
+                createArtItem()
+                .then(dispatch(updateArtItems(items)))
+                .then(dispatch(updateArtSaveItem(newitem.id)))
             }
         }
     }

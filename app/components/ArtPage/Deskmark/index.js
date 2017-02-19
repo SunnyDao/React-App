@@ -88,7 +88,7 @@ export default class Deskmark extends React.Component {
 
     componentDidMount(){
         const {article,actions}= this.props;
-        actions.fetchEntryList('/mock/article/items.json')
+        article.items.length === 0 && actions.fetchEntryList('/mock/article/items.json')
     }
 
     render() {
@@ -103,7 +103,7 @@ export default class Deskmark extends React.Component {
         const containerBox = isEditing
         ?(
             <ItemEditor 
-                item={idSelected}
+                item={item}
                 items={items}
                 onSave={actions.artSaveItems}
                 onCancel={this.cancelEdit}
@@ -111,7 +111,7 @@ export default class Deskmark extends React.Component {
         )
         :(
             <ItemShowLayer 
-                item={idSelected}
+                item={item}
                 onEdit={this.editItem}
                 onDelete={this.deletItem}
             />
