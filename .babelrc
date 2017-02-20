@@ -1,8 +1,11 @@
 {
-  "presets": ["es2015", "stage-0","react"],
-  "env": {
-    "development": {
-      "presets": ["react-hmre"]
+    "presets": ["es2015", "stage-0","react"],
+    "plugins": [
+        "transform-decorators-legacy"
+    ],
+    "env": {
+        "development": {
+            "presets": ["react-hmre"]
+        }
     }
-  }
 }
