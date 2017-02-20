@@ -1,31 +1,25 @@
-/*server.js */
 const webpack = require('webpack');
 const webpackDevMiddleware = require("webpack-dev-middleware");
-const webpackDevServer = require('webpack-dev-server');
-const config = require('./webpack.config.js');
-const isDeveloping = true;
-const port = 8080;
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const express = require('express');
 
-function baseConfig(config, contentBase) {
-	return new webpackDevServer(webpack(config), {
-		historyApiFallback: true,
-		hot: true,
-		inline: true,
-		progress: true,
-		contentBase: contentBase,
-		stats: { colors: true } // 用颜色标识
-	});
-}
+const config = require('./webpack.prod');
 
-let server;
-if(isDeveloping) {
-	server = baseConfig(config, "app/");
-	console.log("development mode...");
-}
+const app = new express();
+const port = 3000;
 
-server.listen(port, "localhost", function(err) {
-	if(err) {
-		console.log(err);
+var compiler = webpack(config);
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+app.use(webpackHotMiddleware(compiler));
+
+app.get("/", function(req, res) {
+  	res.sendFile(__dirname + 'app/index.html')
+});
+
+app.listen(port, function(error) {
+	if (error) {
+		console.error(error)
+	} else {
+		console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
 	}
-	console.log('Listening at localhost:'+port+'...');
 });

@@ -61,6 +61,8 @@ export function artSaveItems(item,items,url){
                 createArtItem()
                 .then(dispatch(updateArtItems(items)))
                 .then(dispatch(updateArtSaveItem(newitem.id)))
+            }else{
+                
             }
         }
     }
