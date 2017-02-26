@@ -6,12 +6,14 @@ const express = require('express');
 const config = require('./webpack.prod');
 
 const app = new express();
-const port = 3000;
+const port = 8080;
 
 var compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, { 
 	noInfo: true, 
-	publicPath: config.output.publicPath
+	stats: { colors: true },
+	publicPath: config.output.publicPath,
+	contentBase:'app/'
 }));
 app.use(webpackHotMiddleware(compiler));
 

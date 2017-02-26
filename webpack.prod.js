@@ -17,7 +17,7 @@ var config = {
 	output:{
 		path:path.resolve(__dirname,'dist'),
 		filename:'[name].js',
-		publicPath:'/build/'
+		publicPath:'http://localhost:8080/static/'
 	},
 	module:{
 		loaders:[
@@ -43,7 +43,7 @@ var config = {
 			title:'hello react',
 			template:'./app/index.html'
 		}),//生成html文件
-		new OpenBrowserPlugin({ url: 'http://localhost:3000' })//浏览器打开
+		new OpenBrowserPlugin({ url: 'http://localhost:8080' })//浏览器打开
     ]
 }
 

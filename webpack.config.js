@@ -18,8 +18,8 @@ var config = {
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: "bundle.js",
-		publicPath: 'http://localhost:8080/'
+		filename: "[name].js",
+		publicPath: '/static/'
 	},
 	module:{
 		loaders:[
